@@ -1,0 +1,179 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  all: unset;
+}
+
+button {
+  all: unset;
+}
+
+.sidebarMenu .logo {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 150px;
+  z-index: 1001;
+  filter: drop-shadow(0px 6px 50px #FFF);
+}
+.sidebarMenu .shoppingCar {
+  position: absolute;
+  bottom: 50px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1002;
+}
+.sidebarMenu .shoppingCar .car-item {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border-radius: 50px;
+  color: #FFA4AF;
+  font-size: 25px;
+}
+.sidebarMenu .hamburger {
+  z-index: 80;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition: background-color 0.3s ease;
+}
+.sidebarMenu .hamburger:hover {
+  background-color: rgba(237, 237, 237, 0.5);
+}
+.sidebarMenu .hamburger span {
+  width: 50px;
+  height: 2px;
+  background-color: #3B3B3A;
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+.sidebarMenu .hamburger.menuOpen {
+  border-left: #EAEAEA 1px solid;
+}
+.sidebarMenu .hamburger.menuOpen span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 4px);
+  background-color: #EE868E;
+}
+.sidebarMenu .hamburger.menuOpen span:nth-child(2) {
+  transform: rotate(-45deg) translate(8px, -4px);
+  background-color: #EE868E;
+}
+.sidebarMenu .menuContent {
+  display: none;
+}
+
+.bannerCards h3 {
+  color: #655B85;
+  cursor: pointer;
+}
+.bannerCards h3:hover {
+  color: #FFA4AF;
+  font-size: x-large;
+}
+.bannerCards .seeMore {
+  text-align: center;
+  border: #FFA4AF 2px solid;
+  border-radius: 100px;
+  background-color: #fff;
+  color: #FFA4AF;
+  cursor: pointer;
+}
+.bannerCards .seeMore:hover {
+  background-color: #FFA4AF;
+  color: #fff;
+}
+
+/* 曆格最外線 */
+.vuecal {
+  border: 1px solid #3B3B3A;
+  background-color: #fff;
+}
+
+.vuecal__title-bar {
+  background-color: black !important;
+  color: pink;
+  padding: 20px 10px !important;
+}
+
+.vuecal__heading .weekday-label {
+  font-size: smaller;
+  color: #3B3B3A;
+  opacity: 50%;
+}
+
+/* 今日日期背景 */
+.vuecal__cell--today {
+  background-color: black !important;
+  color: #FFA4AF;
+}
+
+/* 活動事件樣式 */
+.vuecal__event.event-newarrival {
+  background-color: #FFA4AF !important;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.vuecal__event.event-discount {
+  background-color: #fec000 !important;
+  color: black;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.vuecal__event.event-regular {
+  background-color: #675d88 !important;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.homePage {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----- 自訂 reset 區塊 ----- */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}/*# sourceMappingURL=main.css.map */

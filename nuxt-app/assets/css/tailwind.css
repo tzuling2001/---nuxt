@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----- 自訂 reset 區塊 ----- */
+
+/* 全域盒模型 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 預設移除 margin */
+body, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  font-weight: normal;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+/* 調整圖片 */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 調整列表 */
+ul, ol {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+/* 避免 form 元件有瀏覽器預設樣式 */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+/* button 不要有預設邊框 */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

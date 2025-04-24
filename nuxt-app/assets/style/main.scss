@@ -1,0 +1,37 @@
+@use "sass:map"; //sass 3.0的引用函式的寫法
+
+// base
+@import "./base/var";
+@import "./base/color";
+
+// component
+@import "./components/sidebarMenu";
+@import "./components/bannerCards";
+@import "./components/calenderBoard";
+
+// component
+@import "./page/index";
+
+
+
+/* ----- 自訂 reset 區塊 ----- */
+
+
+// --------
+// layout
+// --------
+
+// default
+// .sidebar-Menu {
+//     position: fixed;
+//     right: 0;
+//     top: 0;
+//     z-index: 1000;
+// }
+
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}

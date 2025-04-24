@@ -1,0 +1,48 @@
+/* 曆格最外線 */
+.vuecal {
+    border: 1px solid $dark;
+    background-color: #fff;
+}
+
+.vuecal__title-bar {
+    background-color: black !important;
+    color: pink;
+    padding: 20px 10px !important;
+}
+
+.vuecal__heading .weekday-label {
+    font-size: smaller;
+    color: $dark;
+    opacity: 50%;
+}
+
+/* 今日日期背景 */
+.vuecal__cell--today {
+    background-color: black !important;
+    color: $pink;
+}
+
+/* 活動事件樣式 */
+.vuecal__event.event-newarrival {
+    background-color: $pink !important;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.vuecal__event.event-discount {
+    background-color: #fec000 !important;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.vuecal__event.event-regular {
+    background-color: #675d88 !important;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
