@@ -1,12 +1,12 @@
 <template>
   <section class="w-full flex justify-center items-center relative z-10">
     <div class="absolute md:flex hidden w-4/5 justify-between z-20 xl:pr-28 ">
-      <div class="custom-back xl:text-xl text-base font-bold rotate-90 cursor-pointer">
+      <h3 class="custom-back xl:text-xl text-base font-bold rotate-90 cursor-pointer">
         BACK
-      </div>
-      <div class="custom-next xl:text-xl text-base font-bold rotate-90 cursor-pointer">
+      </h3>
+      <h3 class="custom-next xl:text-xl text-base font-bold rotate-90 cursor-pointer">
         NEXT
-      </div>
+      </h3>
     </div>
     <div class="w-full">
       <Swiper

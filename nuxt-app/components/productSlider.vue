@@ -1,5 +1,9 @@
 <template>
-  <section class="w-full py-8 bg-white">
+<div class="">
+  <h1 ref="titleRef" id="word" class="w-full md:text-4xl text-2xl font-bold flex place-content-center">
+  {{boxTitle}}
+  </h1>
+  <section class="w-full py-8">
     <div class="max-w-screen-xl mx-auto px-4">
       <!-- 桌機 / 平板：使用 Grid 分頁 -->
       <div v-if="!isMobile" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -37,18 +41,33 @@
       @next="goNext"
     />
   </section>
+</div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
+import gsap from 'gsap'
+import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
 import image01 from '@/assets/img/裡麵有肉/裡面有肉01.webp'
 import image02 from '@/assets/img/胖卡夏/爆蒜起司培根01.webp'
 import image03 from '@/assets/img/飽正讚/伯爵奶酥.webp'
 import image04 from '@/assets/img/周邊/菜瓜布.webp'
 
+// ==============
+// 外部標題
+// ==============
+defineProps({
+  boxTitle: {
+    type: String,
+    required: true
+  }
+})
+
+// ===============
 // 商品資料
+// ===============
 const products = ref([
   { id: 1, image: image01, label: '胖卡夏', subLabel: 'X Uber Eats', title: '爆蒜起司培根總匯', price: 999 },
   { id: 2, image: image02, label: '胖卡夏', subLabel: 'X Uber Eats', title: '韓式泡菜燒肉堡', price: 899 },
@@ -62,7 +81,9 @@ const products = ref([
   { id: 10, image: image02, label: '胖卡夏', subLabel: 'X Uber Eats', title: '蒜香炸雞三明治', price: 880 }
 ])
 
+// ================
 // 判斷是否為手機
+// ================
 const isMobile = ref(false)
 const detectMobile = () => {
   isMobile.value = window.innerWidth <= 768
@@ -72,7 +93,9 @@ onMounted(() => {
   window.addEventListener('resize', detectMobile)
 })
 
+// ===============
 // 分頁控制邏輯
+// ===============
 const slidesPerPage = ref(4)
 const currentPage = ref(1)
 const totalPage = computed(() => Math.ceil(products.value.length / slidesPerPage.value))
@@ -81,7 +104,9 @@ const paginatedProducts = computed(() => {
   return products.value.slice(start, start + slidesPerPage.value)
 })
 
+// ==============
 // Swiper 控制
+// ==============
 const swiperRef = ref(null)
 const onSwiperReady = (swiperInstance) => {
   swiperRef.value = { swiper: swiperInstance }
@@ -102,6 +127,8 @@ const goPrev = () => {
   }
 }
 </script>
+
+
 <style scoped>
 .swiper-slide-prev, .swiper-slide-next{
     opacity: 40%;

@@ -1,23 +1,24 @@
-.bannerCards{
-   & h3 {
-    color: $purple;
-    cursor: pointer;
-    &:hover{
-        color: $pink;
-        font-size: x-large;
-    }
-   }
+.bannerCards {
+    & h3 {
+        color: $purple;
+        cursor: pointer;
 
-   & .seeMore {
+        &:hover {
+            color: $pink;
+        }
+    }
+
+    & .seeMore {
         text-align: center;
         border: $pink 2px solid;
         border-radius: 100px;
         background-color: #fff;
         color: $pink;
         cursor: pointer;
-        &:hover{
+
+        &:hover {
             background-color: $pink;
             color: #fff;
         }
-   }
+    }
 }

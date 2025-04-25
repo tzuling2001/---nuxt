@@ -9,23 +9,35 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  font-family: "Noto Sans TC", serif;
 }
 
 h1,
 h2,
-h3,
+h3 {
+  margin: 0;
+  padding: 0;
+  font-family: "Kaisei Tokumin", serif;
+}
+
 h4,
 p {
   margin: 0;
   padding: 0;
+  font-family: "Noto Sans TC", serif;
 }
 
 a {
   all: unset;
 }
 
+span {
+  font-family: "Noto Sans TC", serif;
+}
+
 button {
   all: unset;
+  font-family: "Parkinsans", sans-serif;
 }
 
 .sidebarMenu .logo {
@@ -98,7 +110,6 @@ button {
 }
 .bannerCards h3:hover {
   color: #FFA4AF;
-  font-size: x-large;
 }
 .bannerCards .seeMore {
   text-align: center;

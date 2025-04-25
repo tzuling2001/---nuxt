@@ -1,18 +1,17 @@
 <template>
   <div
     v-if="open"
-    class="fixed right-0 top-0 z-10 w-screen h-full bg-white/95 text-white overflow-y-auto scroll-y- transition-all duration-300 ease-in-out flex flex-col gap-[60px] px-4 md:px-[100px] py-10 md:justify-center"
-
+    class="fixed right-0 top-0 z-30 w-screen h-full bg-white/95 text-white overflow-y-auto flex flex-col gap-[60px] px-4 md:px-[100px] py-10 md:justify-center"
     style="scrollbar-width: none;"
   >
     <!-- Title -->
     <div
-      class="font-serif font-extrabold text-[48px] md:text-[80px] text-black [text-stroke:2px_#EE868E]"
+      class="md:w-1/2 w-full px-4 h-auto"
     >
-      快樂吃飽 就選沈早
+      <img src="../assets/img/svg/slogan(紫色.png" alt="">
     </div>
     <!-- Menu 內容 -->
-    <div class="w-full flex flex-wrap gap-10">
+    <div class="w-full flex flex-wrap gap-10 sm:px-10">
       <!-- 左側選單 -->
       <ul class="min-w-2/5 gap-6">
         <li class="flex flex-col gap-2 pb-6">

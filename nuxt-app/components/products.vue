@@ -4,13 +4,13 @@
     class="group max-w-[260px] w-full h-auto flex flex-col gap-5 pb-2 border border-black"
   >
     <!-- 商品圖片 -->
-    <div class="overflow-hidden rounded-lg group-hover:border border-black  group-hover:rounded-lg relative">
+    <div class="overflow-hidden rounded-lg group-hover:rounded-lg relative">
       <img
         :src="data.image"
         :alt="data.title"
-        class="object-cover w-[260px] h-[260px] transition-all duration-300 group-hover:p-10 group-hover:max-w-[280px] absolute top-0 left-0 z-50"
+        class="w-[260px] h-[260px] transition-all duration-300 md:p-0 md:group-hover:p-10 p-10 absolute top-0 left-0 z-50"
       >
-      <div class="item-Img-marquee">
+      <div class="item-Img-marquee border border-black rounded-lg relative ">
           <div class="marquee-ground">
               <div class="marquee-info row-b">
                   <p>
@@ -43,17 +43,21 @@
           </div>  
       </div>
     </div>
+
+    <!-- 商品標籤 -->
     <div class="flex justify-between items-center">
       <p class="text-sm border border-black px-3 py-[2px] rounded-full text-center group-hover:bg-black group-hover:text-white">
         {{ data.label }}
       </p>
       <p>{{ data.subLabel }}</p>
     </div>
+
     <!-- 商品名稱與價格 -->
     <div class="flex flex-col items-end">
       <p>{{ data.title }}</p>
       <p>NT.{{ data.price }}</p>
     </div>
+
     <!-- 底線 -->
     <span class="w-full h-[1px] bg-black"></span>
   </NuxtLink>

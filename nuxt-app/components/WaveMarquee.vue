@@ -1,6 +1,6 @@
 <template>
   <!-- 加入 ref="container" 讓 IntersectionObserver 監聽這整塊 -->
-  <div class="marquee-container" ref="container">
+  <div class="marquee-container w-full md:h-[300px] h-[100px] " ref="container">
     <svg ref="pathSvg" width="1440" height="200">
       <path
         id="textPath"
@@ -10,15 +10,15 @@
       />
     </svg>
 
-    <div class="marquee-text">
-      <span
+    <div class="marquee-text md:block hidden">
+      <h1
         v-for="(letter, i) in letters"
         :key="i"
         :ref="el => letterEls[i] = el"
         class="letter"
       >
         {{ letter }}
-      </span>
+      </h1>
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@
 import { ref, onMounted, nextTick } from 'vue'
 import gsap from 'gsap'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
-
+import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
 gsap.registerPlugin(MotionPathPlugin)
 
 // ✅ 接收外部傳入的文字內容
@@ -40,10 +40,10 @@ const props = defineProps({
 
 const letters = props.text.split('')
 const letterEls = []              // 存放字母元素的 array
-const pathSvg = ref(null)        // SVG path 用不到座標也保留
+const pathSvg = ref(null)
 const container = ref(null)      // 用來監聽可視區的容器 ref
 
-// ✅ 將動畫邏輯包成函數，方便重複使用（ex. IntersectionObserver 觸發）
+// IntersectionObserver 觸發
 function startMotionPathAnimation() {
   letterEls.forEach((el, i) => {
     if (!el) return
@@ -62,31 +62,17 @@ function startMotionPathAnimation() {
     })
   })
 }
-
-onMounted(async () => {
-  await nextTick() // 等 DOM 插入完成
-
-  // ✅ 用 IntersectionObserver 確保元件真的進入畫面後才執行動畫
-  const observer = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      observer.disconnect() // 只觸發一次就停止觀察
-      startMotionPathAnimation() // 執行動畫
-    }
-  }, {
-    threshold: 0.1 // 有 10% 出現在畫面即可觸發
-  })
-
-  if (container.value) {
-    observer.observe(container.value)
-  }
+useIntersectionObserver(container, () => {
+  startMotionPathAnimation()
 })
+
+
+
 </script>
 
 <style scoped>
 .marquee-container {
   position: relative;
-  width: 100%;
-  height: 300px;
   overflow: hidden;
   background: linear-gradient(to bottom, #FFA4AF, #ffff);
 }
@@ -99,6 +85,6 @@ onMounted(async () => {
   position: absolute;
   font-size: 40px;
   font-weight: bold;
-  color: #3B3B3A;
+  color: #ffffff;
 }
 </style>

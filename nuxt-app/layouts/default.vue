@@ -1,9 +1,9 @@
 <template>
   <div class="default-layout">
     <!-- {{ 起始動畫 }} -->
-    <InitAnim @done="mainShow = true" class="xl:absolute fixed top-0 z-20 pointer-events-none" style="filter: drop-shadow(0px 6px 50px #FFF);"/>
+    <InitAnim @done="mainShow = true" class="xl:absolute fixed top-0 z-20 pointer-events-none"/>
 
-    <div class="headerBox w-full h-24 lg:hidden block bg-white fixed top-0 left-0 z-10" :class="{ 'opacity-100': showLogo, 'opacity-0': !showLogo }" />
+    <div class="headerBox w-full h-20 xl:hidden block bg-white fixed top-0 left-0 z-10" style="filter: drop-shadow(0px 6px 50px #FFF);":class="{ 'opacity-100': showLogo, 'opacity-0': !showLogo }" />
 
     <!-- {{ Menu }} -->
       <!-- Web -->
@@ -22,7 +22,7 @@
         <main>
           <slot />
         </main>
-        <footer class="bg-slate-100 p-4 text-center text-sm text-gray-500">
+        <footer class="bg-[#655B85] p-10 text-center">
           <Footer />
         </footer>
       </div>
@@ -111,12 +111,9 @@ onUnmounted(() => {
 
 <style scoped>
 .headerBox{
-  background: linear-gradient(
-  to bottom,
-  rgba(255, 164, 175) 5%,
-  rgba(255, 164, 175,0.5) 20%,
-  rgba(255, 255, 255, 0.3) 45%,
-  rgba(255, 255, 255, 0) 75%
-);
+  background: linear-gradient(to bottom,
+  hsl(0, 0%, 100%),75%,
+  hsl(0, 0%, 100%, 0)
+  );
 }
 </style>
