@@ -17,5 +17,8 @@ export default defineNuxtConfig({
         }
       ]
     }
+  },
+  nitro: {
+    preset: 'node' // 或保持預設也可以
   }
 })
