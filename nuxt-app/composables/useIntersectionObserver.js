@@ -4,9 +4,10 @@ export function useIntersectionObserver(targetRef, callback, threshold = 0.5) {
     let observer = null
 
     onMounted(async () => {
+        if (!process.client) return
+
         await nextTick()
         if (!targetRef.value) return
-
         observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 // observer.disconnect()

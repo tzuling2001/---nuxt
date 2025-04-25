@@ -28,25 +28,25 @@ onMounted(() => {
 })
 
 // 假資料，未來可用 props 或 API 替換
-const calendarEvents = [
-  {
-    title: '奶油可頌團購',
-    start: '2024-09-20',
-    end: '2024-09-20',
-    content: '台北車站取貨',
-    class: 'bg-[#ee868e]'
-  },
-  {
-    title: '焦糖可頌新品',
-    start: '2024-09-25',
-    end: '2024-09-25',
-    class: 'bg-[#fec000]'
-  },
-  {
-    title: '限時折扣',
-    start: '2024-10-01',
-    end: '2024-10-01',
-    class: 'bg-[#675d88]'
-  }
-]
+// const calendarEvents = [
+//   {
+//     title: '奶油可頌團購',
+//     start: '2024-09-20',
+//     end: '2024-09-20',
+//     content: '台北車站取貨',
+//     class: 'bg-[#ee868e]'
+//   },
+//   {
+//     title: '焦糖可頌新品',
+//     start: '2024-09-25',
+//     end: '2024-09-25',
+//     class: 'bg-[#fec000]'
+//   },
+//   {
+//     title: '限時折扣',
+//     start: '2024-10-01',
+//     end: '2024-10-01',
+//     class: 'bg-[#675d88]'
+//   }
+// ]
 </script>

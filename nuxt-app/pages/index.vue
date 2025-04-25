@@ -54,15 +54,21 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 // LOGO 視差滾動顯示
 // ===============
 const showLogo = ref(false)
+
 const handleScroll = () => {
-  // console.log('SCROLL Y:', window.scrollY)
   showLogo.value = window.scrollY > 100
 }
+
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  if (process.client) {
+    window.addEventListener('scroll', handleScroll)
+  }
 })
+
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
+  if (process.client) {
+    window.removeEventListener('scroll', handleScroll)
+  }
 })
 
 // ===============

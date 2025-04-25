@@ -33,9 +33,6 @@
 </template>
 
 <script setup>
-import SidebarMenu from '~/components/SidebarMenu.vue'
-import Footer from '~/components/Footer.vue'
-import MobileMenubar from '~/components/mobileMenubar.vue';
 import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { Transition } from 'vue';

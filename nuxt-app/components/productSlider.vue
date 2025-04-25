@@ -48,8 +48,6 @@
 import { ref, computed, onMounted } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
-import gsap from 'gsap'
-import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
 import image01 from '@/assets/img/裡麵有肉/裡面有肉01.webp'
 import image02 from '@/assets/img/胖卡夏/爆蒜起司培根01.webp'
 import image03 from '@/assets/img/飽正讚/伯爵奶酥.webp'
