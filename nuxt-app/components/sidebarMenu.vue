@@ -35,11 +35,15 @@ const handleScroll = () => {
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  if (process.client) {
+    window.addEventListener('scroll', handleScroll)
+  }
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
+  if (process.client) {
+    window.removeEventListener('scroll', handleScroll)
+  }
 })
 
 

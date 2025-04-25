@@ -62,6 +62,7 @@ function startMotionPathAnimation() {
     })
   })
 }
+
 useIntersectionObserver(container, () => {
   startMotionPathAnimation()
 })

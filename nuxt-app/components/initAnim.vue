@@ -24,6 +24,7 @@ const rightRef = ref(null)
 const initAnimRef = ref(null)
 
 onMounted(() => {
+    if (process.client) {
     const ctx = gsap.context(() => {
         const tl =gsap.timeline()
 
@@ -49,6 +50,7 @@ onMounted(() => {
         );
     })
     onUnmounted(() => ctx.revert())
+    }
 })
 
 </script>
