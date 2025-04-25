@@ -1,34 +1,34 @@
 <template>
-  <!-- 加入 ref="container" 讓 IntersectionObserver 監聽這整塊 -->
-  <div class="marquee-container w-full md:h-[300px] h-[100px] " ref="container">
-    <svg ref="pathSvg" width="1440" height="200">
-      <path
-        id="textPath"
-        d="M 0 100 Q 240 0 480 100 T 960 100 T 1440 100"
-        fill="none"
-        stroke="transparent"
-      />
-    </svg>
+  <ClientOnly>
+    <div class="marquee-container w-full md:h-[300px] h-[100px] " ref="container">
+      <svg ref="pathSvg" width="1440" height="200">
+        <path
+          id="textPath"
+          d="M 0 100 Q 240 0 480 100 T 960 100 T 1440 100"
+          fill="none"
+          stroke="transparent"
+        />
+      </svg>
 
-    <div class="marquee-text md:block hidden">
-      <h1
-        v-for="(letter, i) in letters"
-        :key="i"
-        :ref="el => letterEls[i] = el"
-        class="letter"
-      >
-        {{ letter }}
-      </h1>
+      <div class="marquee-text md:block hidden" ref="textBox">
+        <h1
+          v-for="(letter, i) in letters"
+          :key="i"
+          :ref="el => letterEls[i] = el"
+          class="letter"
+        >
+          {{ letter }}
+        </h1>
+      </div>
     </div>
-  </div>
+  </ClientOnly>
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref } from 'vue'
 import gsap from 'gsap'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
-gsap.registerPlugin(MotionPathPlugin)
 
 // ✅ 接收外部傳入的文字內容
 const props = defineProps({
@@ -39,15 +39,22 @@ const props = defineProps({
 })
 
 const letters = props.text.split('')
-const letterEls = []              // 存放字母元素的 array
+const letterEls = []  // 存放字母元素的 array
 const pathSvg = ref(null)
-const container = ref(null)      // 用來監聽可視區的容器 ref
+const container = ref(null)
+const textBox = ref(null)
+
 
 // IntersectionObserver 觸發
-function startMotionPathAnimation() {
+useIntersectionObserver(container, () => {
+
+  gsap.registerPlugin(MotionPathPlugin)  
+  gsap.fromTo(textBox.value,{opacity:0},{opacity:1})
+
   letterEls.forEach((el, i) => {
     if (!el) return
     gsap.to(el, {
+      opacity: 1, 
       duration: 6,
       repeat: -1,
       ease: 'none',
@@ -61,13 +68,7 @@ function startMotionPathAnimation() {
       }
     })
   })
-}
-
-useIntersectionObserver(container, () => {
-  startMotionPathAnimation()
 })
-
-
 
 </script>
 
