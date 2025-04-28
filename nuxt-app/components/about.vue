@@ -48,10 +48,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
-
-gsap.registerPlugin(ScrollTrigger)
 
 // refs
 const backgroundRef = ref(null)
@@ -69,9 +66,10 @@ const bossBox = ref(null)
 
 const isMobile = ref(false)
 const clickStage = ref(0)
-const tl = gsap.timeline({ paused: true }) // 初始就 paused，手動控制播放
 
 useIntersectionObserver(backgroundRef, () => {
+
+    const tl = gsap.timeline({ paused: true })
     isMobile.value = window.innerWidth < 768
 
     resetAnimation()
