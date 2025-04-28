@@ -9,7 +9,7 @@
       <span />
       <span />
     </div>
-    <div class="shoppingCar">
+    <div class="shoppingCar flex flex-col items-center">
       <div class="car-item">
         <p> 0 </p>
       </div>

@@ -2,12 +2,12 @@
 <div ref="initAnimRef"  class="w-full flex items-center justify-center">
     <div class="logoAnim relative flex">
         <img ref="leftRef" class="md:max-w-[225px] max-w-[135px] mx-auto"
-        src="../assets/img/svg/test-logoAnim-pink (1).png">
+        src="../assets/img/svg/沈早.png">
         <img ref="starRef" 
-        src="../assets/img/svg/test-logoAnim-star.png" 
+        src="../assets/img/svg/星.png" 
         class="absolute top-0 md:max-w-[36px]  max-w-[21px]  md:left-[225px]  left-[135px]">
         <img ref="rightRef" class="md:max-w-[324px] max-w-[194.4px] mx-auto"
-        src="../assets/img/svg/test-logoAnim-purpel.png">
+        src="../assets/img/svg/俱樂部.png">
     </div>
 </div>
 </template>

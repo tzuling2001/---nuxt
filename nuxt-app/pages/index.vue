@@ -33,7 +33,7 @@
   </div>
 
   <!-- Calendar -->
-  <div class="CalendarBox w-full h-auto md:p-32 md:flex flex-wrap justify-items-center px-10">
+  <div class="CalendarBox w-full h-auto md:p-32 md:flex flex-wrap justify-items-center px-10 py-10">
     <GroupBuyList />
     <CalendarBoard />
   </div>
@@ -95,6 +95,12 @@ useIntersectionObserver(paper, () => {
   background: linear-gradient(to bottom,
   hsl(0, 0%, 100%) 85%,
   hsl(0, 0%, 100%,0)
+  );
+}
+.aboutBox{
+  background: linear-gradient(to bottom,
+  hsl(0, 0%, 100%,0),
+  hsl(0, 0%, 100%)
   );
 }
 </style>
