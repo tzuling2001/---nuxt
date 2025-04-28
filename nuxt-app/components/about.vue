@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 import gsap from 'gsap'
 import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
 
@@ -67,70 +67,77 @@ const bossBox = ref(null)
 const isMobile = ref(false)
 const clickStage = ref(0)
 
-useIntersectionObserver(backgroundRef, () => {
+// 移動 `tl` 變數到外層，這樣它能在 `setup()` 內部全域訪問
+let tl = null;
 
-    const tl = gsap.timeline({ paused: true })
-    isMobile.value = window.innerWidth < 768
+// const tl = gsap.timeline({ paused: true });
+if (process.client) {
+    tl = gsap.timeline({ paused: true });
 
-    resetAnimation()
+    useIntersectionObserver(backgroundRef, () => {
+        
+        isMobile.value = window.innerWidth < 768
 
-    // 初始設定
-    gsap.set([toast01.value, toast02.value], {
-        y: 0, x: 0, scale: 1, rotation: 0, opacity: 1,
+        resetAnimation()
+
+        // 初始設定
+        gsap.set([toast01.value, toast02.value], {
+            y: 0, x: 0, scale: 1, rotation: 0, opacity: 1,
+        })
+        gsap.set([title03.value, title04.value], { opacity: 0 })
+        gsap.set([bossImg.value, bossName.value, infoText.value, bossBox.value], {
+            opacity: 0, scale: 1
+        })
+
+        // Timeline 排列
+        tl.fromTo(title01.value, { opacity: 0, y: 200 }, { 
+            opacity: 1, y: 0, duration: 1, rotation: -3, ease: 'power2.out' 
+        })
+        .fromTo(title02.value, { opacity: 0, y: 200 }, { 
+            opacity: 1, y: 0, duration: 1, ease: 'bounce.out' 
+        }, '+0.3')
+
+        .addPause() // 第一次，停住
+
+        tl.to([title01.value, title02.value], { opacity: 0 }, '+2')
+        .to(toast01.value, { 
+            rotation: 90, 
+            x: isMobile.value ? -150 : -450, 
+            scale: isMobile.value ? 0.5 : 1,
+        })
+        .to(toast02.value, { 
+            rotation: -90, 
+            x: isMobile.value ? 150 : 450, 
+            y: isMobile.value ? -150 : -200, 
+            scale: isMobile.value ? 0.5 : 1,
+        })
+        .fromTo(title03.value, { opacity: 0, y: 100 }, { 
+            opacity: 1, y: 0, duration: 1, ease: 'power2.out' 
+        })
+        .fromTo(title04.value, { opacity: 0, y: 100 }, { 
+            opacity: 1, y: 0, duration: 1, ease: 'power2.out' 
+        })
+        
+        .addPause() // 第二幕完，停住
+
+        tl.to([title03.value, title04.value], { opacity: 0 })
+        .to([toast01.value, toast02.value], { 
+            scale: isMobile.value ? 0.3 : 0.5, 
+            opacity: isMobile.value ? 0 : 1
+        })
+        .to(bossImg.value, { opacity: 1 })
+        .fromTo(bossName.value, { opacity: 0, y: -100 }, { 
+            opacity: 1, y: 0, duration: 1, rotation: -3, ease: 'bounce.out' 
+        })
+        .to(infoText.value, { opacity: 1 })
+
+        .addPause() // 第三幕完
+
+        // 直接播第一次 (第一幕)
+        tl.play()
     })
-    gsap.set([title03.value, title04.value], { opacity: 0 })
-    gsap.set([bossImg.value, bossName.value, infoText.value, bossBox.value], {
-        opacity: 0, scale: 1
-    })
 
-    // Timeline 排列
-    tl.fromTo(title01.value, { opacity: 0, y: 200 }, { 
-        opacity: 1, y: 0, duration: 1, rotation: -3, ease: 'power2.out' 
-    })
-    .fromTo(title02.value, { opacity: 0, y: 200 }, { 
-        opacity: 1, y: 0, duration: 1, ease: 'bounce.out' 
-    }, '+0.3')
-
-    .addPause() // 第一次，停住
-
-    tl.to([title01.value, title02.value], { opacity: 0 }, '+2')
-    .to(toast01.value, { 
-        rotation: 90, 
-        x: isMobile.value ? -150 : -450, 
-        scale: isMobile.value ? 0.5 : 1,
-    })
-    .to(toast02.value, { 
-        rotation: -90, 
-        x: isMobile.value ? 150 : 450, 
-        y: isMobile.value ? -150 : -200, 
-        scale: isMobile.value ? 0.5 : 1,
-    })
-    .fromTo(title03.value, { opacity: 0, y: 100 }, { 
-        opacity: 1, y: 0, duration: 1, ease: 'power2.out' 
-    })
-    .fromTo(title04.value, { opacity: 0, y: 100 }, { 
-        opacity: 1, y: 0, duration: 1, ease: 'power2.out' 
-    })
-    
-    .addPause() // 第二幕完，停住
-
-    tl.to([title03.value, title04.value], { opacity: 0 })
-    .to([toast01.value, toast02.value], { 
-        scale: isMobile.value ? 0.3 : 0.5, 
-        opacity: isMobile.value ? 0 : 1
-    })
-    .to(bossImg.value, { opacity: 1 })
-    .fromTo(bossName.value, { opacity: 0, y: -100 }, { 
-        opacity: 1, y: 0, duration: 1, rotation: -3, ease: 'bounce.out' 
-    })
-    .to(infoText.value, { opacity: 1 })
-
-    .addPause() // 第三幕完
-
-    // 直接播第一次 (第一幕)
-    tl.play()
-})
-
+}
 // 點擊控制
 function handleClick() {
     if (clickStage.value <= 3) {
