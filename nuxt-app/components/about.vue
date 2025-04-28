@@ -12,7 +12,7 @@
             <p ref="title01" class="md:text-7xl text-4xl text-black font-bold mb-4 p-2 bg-white text-center ">給愛吃早餐的你</p>
             <p ref="title02" class="md:text-7xl text-4xl text-black font-bold mb-4 p-2 bg-white text-center">24小時想吃就吃</p>
         </div>
-        <div ref="toastBox" class="toastBox w-full flex flex-col items-center md:h-[465px] h-[250px] relative pointer-events-none">
+        <div ref="toastBox" class="toastBox w-full flex flex-col items-center md:h-[465px] h-[230px] relative pointer-events-none">
             <img ref="toast01" class="md:max-w-[600px] w-10/12" src="../assets/img/svg/芋泥吐司.png">
             <img ref="toast02" class="md:max-w-[600px] w-10/12 absolute bottom-0" src="../assets/img/svg/草奶吐.png">
         </div>
