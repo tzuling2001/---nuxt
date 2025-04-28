@@ -1,5 +1,5 @@
 <template>
-<div class="about w-full flex flex-col items-center">
+<div class="about w-full px-4 flex flex-col items-center">
     <div class="w-full flex justify-center">
         <h1 class="w-10/12 xl:text-4xl md:text-2xl text-black font-bold border-b-2 border-black py-6 mb-10  md:flex-none flex-1 "> 🍞 ABOUT</h1>
     </div>
@@ -102,14 +102,14 @@ if (process.client) {
         tl.to([title01.value, title02.value], { opacity: 0 }, '+2')
         .to(toast01.value, { 
             rotation: 90, 
-            x: isMobile.value ? -150 : -450, 
-            scale: isMobile.value ? 0.5 : 1,
+            x: isMobile.value ? -200 : -450, 
+            scale: isMobile.value ? 1.3 : 1,
         })
         .to(toast02.value, { 
             rotation: -90, 
-            x: isMobile.value ? 150 : 450, 
+            x: isMobile.value ? 210 : 450, 
             y: isMobile.value ? -150 : -200, 
-            scale: isMobile.value ? 0.5 : 1,
+            scale: isMobile.value ? 1.2 : 1,
         })
         .fromTo(title03.value, { opacity: 0, y: 100 }, { 
             opacity: 1, y: 0, duration: 1, ease: 'power2.out' 

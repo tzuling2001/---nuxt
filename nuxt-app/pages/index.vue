@@ -28,7 +28,7 @@
   </div>
 
   <!-- about -->
-  <div class="aboutBox w-full xl:pr-32 ">
+  <div class="aboutBox w-full xl:pr-32 overflow-x-hidden ">
     <About />
   </div>
 
